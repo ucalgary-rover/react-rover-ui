@@ -1,0 +1,59 @@
+{
+  "_args": [
+    [
+      "mjpegcanvas@0.4.0",
+      "C:\\Users\\derek\\Documents\\Rover\\rover-software\\react-rover-ui"
+    ]
+  ],
+  "_from": "mjpegcanvas@0.4.0",
+  "_id": "mjpegcanvas@0.4.0",
+  "_inBundle": false,
+  "_integrity": "sha512-gAejJwlPyK9FpbeAGISwNO3OuEEds/shaRE8+cbX13/zddM64OSLjm0C/avb4sHa+YEHS2tCAciid72hQPK1NQ==",
+  "_location": "/mjpegcanvas",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "mjpegcanvas@0.4.0",
+    "name": "mjpegcanvas",
+    "escapedName": "mjpegcanvas",
+    "rawSpec": "0.4.0",
+    "saveSpec": null,
+    "fetchSpec": "0.4.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/mjpegcanvas/-/mjpegcanvas-0.4.0.tgz",
+  "_spec": "0.4.0",
+  "_where": "C:\\Users\\derek\\Documents\\Rover\\rover-software\\react-rover-ui",
+  "author": {
+    "name": "Russell Toris",
+    "email": "rctoris@wpi.edu",
+    "url": "http://wpi.edu/~rctoris/"
+  },
+  "description": "Display a MJPEG stream from the ROS web_video_server Inside of a HTML5 Canvas",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-concat": "~0.1.3",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-watch": "~0.3.1",
+    "grunt-jsdoc": "~0.3.0"
+  },
+  "homepage": "https://www.robotwebtools.org",
+  "keywords": [
+    "ROS",
+    "ros",
+    "mjpeg",
+    "mjpegcanvas",
+    "mjpegcanvasjs",
+    "robot",
+    "mjpeg_server",
+    "web_video_server"
+  ],
+  "license": "BSD",
+  "name": "mjpegcanvas",
+  "version": "0.4.0"
+}
