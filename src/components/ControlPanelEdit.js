@@ -1,3 +1,5 @@
+// this file will be deleted as it is the same as MapControlPanel.js
+
 import React, { Component, useState, useEffect } from 'react';
 import EventEmitter2 from 'eventemitter2';
 import ROSLIB from 'roslib';
