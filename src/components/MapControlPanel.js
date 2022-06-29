@@ -55,8 +55,8 @@ export function MapControlPanel(props){
     if(event.target.longitude.value !== "" && event.target.latitude.value !== ""){
       const newCoordinate = {long: event.target.longitude.value, lat: event.target.latitude.value};
       props.addMarker(newCoordinate);
-      event.target.longitude.value = "";
       event.target.latitude.value = "";
+      event.target.longitude.value = "";
     }
   }
 
@@ -78,8 +78,8 @@ export function MapControlPanel(props){
           <div style={{overflow: "auto", fontSize: "14px"}} >
         <span>
           <strong>Point#:</strong> {i},
-          <strong>   Longitude:</strong> {newCoordinate.lng},
-          <strong>   Latitude:</strong> {newCoordinate.lat}
+          <strong>   Latitude:</strong> {newCoordinate.lat},
+          <strong>   Longitude:</strong> {newCoordinate.lng}
         </span><br/>
       </div>
         ));
@@ -102,11 +102,11 @@ export function MapControlPanel(props){
       onClick = {loadCSV} > Load CSV</button><br/>
  
     <form style={{visibility: visibility}}  onSubmit={addCoordinate}>
+      <label for="latitude">Latitude:</label>
+      <input type="number" step="any" id="latitude" name="latitude"></input>
+      <br></br>
       <label for="longitude">Longitude:</label>
       <input type="number" step="any" id="longitude" name="longitude" ></input>
-      <br></br>
-      <label for="latitude">latitude:</label>
-      <input type="number" step="any" id="latitude" name="latitude"></input>
       <br></br>
       <input type="submit" value="Add Coordinate"></input>
     </form>
@@ -115,8 +115,8 @@ export function MapControlPanel(props){
       <div style={{overflow: "auto", fontSize: "14px"}} >
         <span>
           <strong>Point#:</strong> {idx+1},
-          <strong>   Longitude:</strong> {coordinate.lng},
-          <strong>   Latitude:</strong> {coordinate.lat}
+          <strong>   Latitude:</strong> {coordinate.lat},
+          <strong>   Longitude:</strong> {coordinate.lng}
         </span><br/>
       </div>
     ))}
