@@ -1,0 +1,5 @@
+robot_gui_bridge
+/home/shivamdesai/Desktop/rover/react-rover-ui/devel/.private/robot_gui_bridge/cmake.lock /home/shivamdesai/Desktop/rover/react-rover-ui/devel/./cmake.lock
+/home/shivamdesai/Desktop/rover/react-rover-ui/devel/.private/robot_gui_bridge/share/robot_gui_bridge/cmake/robot_gui_bridgeConfig-version.cmake /home/shivamdesai/Desktop/rover/react-rover-ui/devel/share/robot_gui_bridge/cmake/robot_gui_bridgeConfig-version.cmake
+/home/shivamdesai/Desktop/rover/react-rover-ui/devel/.private/robot_gui_bridge/share/robot_gui_bridge/cmake/robot_gui_bridgeConfig.cmake /home/shivamdesai/Desktop/rover/react-rover-ui/devel/share/robot_gui_bridge/cmake/robot_gui_bridgeConfig.cmake
+/home/shivamdesai/Desktop/rover/react-rover-ui/devel/.private/robot_gui_bridge/lib/pkgconfig/robot_gui_bridge.pc /home/shivamdesai/Desktop/rover/react-rover-ui/devel/lib/pkgconfig/robot_gui_bridge.pc
