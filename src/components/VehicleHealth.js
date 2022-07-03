@@ -2,6 +2,36 @@ import "../style/VehicleHealth.css"
 import React, { Component } from 'react';
 import ROSLIB from 'roslib';
 
+<script type="text/javascript" src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+
+var ros = new ROSLIB.Ros({
+    url : 'ws://localhost:9090'
+  });
+  
+  ros.on('connection', function() {
+    console.log('Connected to websocket server');
+  });
+  
+  ros.on('error', function(error) {
+    console.log('Error connecting to websocket server: ', error);
+  });
+  
+  ros.on('close', function() {
+    console.log('Connection to websocket server closed.');
+  });
+  
+  var listener = new ROSLIB.Topic({
+    ros : ros,
+    name : 'chatter',
+    messageType: 'std_msgs/String'
+  });
+  
+  // message contains the location of the rover currently
+  listener.subscribe(function(message) {
+    console.log();
+    document.getElementById("msg").innerHTML = message.data;
+  });
+
 export class VehicleHealth extends Component {
   constructor(props) {
     super(props);
@@ -25,8 +55,9 @@ export class VehicleHealth extends Component {
                         <td>{this.latitude}</td>
                     </tr>
                     <tr>
-                        <td>field c</td>
-                        <td>9999</td>
+                        <td>Last /txt_msg received:</td>
+                        <td><span id="msg"></span></td>
+                    
                     </tr>
                     <tr>
                         <td>field d</td>

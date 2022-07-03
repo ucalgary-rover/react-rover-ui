@@ -1,0 +1,8 @@
+prefix=/home/shivamdesai/Desktop/rover/react-rover-ui/devel/.private/rover_gui_bridge
+
+Name: rover_gui_bridge
+Description: Description of rover_gui_bridge
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
