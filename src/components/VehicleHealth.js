@@ -20,16 +20,30 @@ var ros = new ROSLIB.Ros({
     console.log('Connection to websocket server closed.');
   });
   
+  // example listener
   var listener = new ROSLIB.Topic({
     ros : ros,
     name : 'chatter',
     messageType: 'std_msgs/String'
   });
+
+  //listener of linear accelearation
+  var values = new ROSLIB.Topic({
+    ros : ros,
+    name : "imu",
+    messageType: 'std_msgs/String'
+  });
   
-  // message contains the location of the rover currently
+  // example subscriber
   listener.subscribe(function(message) {
     console.log();
     document.getElementById("msg").innerHTML = message.data;
+  });
+
+  // subscriber for linear acceleration
+  values.subscribe(function(message) {
+    console.log();
+    document.getElementById("accelx").innerHTML = message.data;
   });
 
 export class VehicleHealth extends Component {
@@ -60,8 +74,8 @@ export class VehicleHealth extends Component {
                     
                     </tr>
                     <tr>
-                        <td>field d</td>
-                        <td>Type</td>
+                        <td>IMU DATA</td>
+                        <td><span id="accelx"></span></td>
                     </tr>
                     <tr>
                         <td>field e</td>
