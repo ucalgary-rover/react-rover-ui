@@ -30,8 +30,8 @@ var ros = new ROSLIB.Ros({
   //listener of linear accelearation
   var values = new ROSLIB.Topic({
     ros : ros,
-    name : "imu",
-    messageType: 'std_msgs/String'
+    name : "imu/data",
+    messageType: 'sensor_msgs/Imu'
   });
   
   // example subscriber
@@ -43,7 +43,47 @@ var ros = new ROSLIB.Ros({
   // subscriber for linear acceleration
   values.subscribe(function(message) {
     console.log();
-    document.getElementById("accelx").innerHTML = message.data;
+    document.getElementById("orienx").innerHTML = message.orientation.x;
+  });
+
+  values.subscribe(function(message) {
+    console.log();
+    document.getElementById("orieny").innerHTML = message.orientation.y;
+  });
+
+  values.subscribe(function(message) {
+    console.log();
+    document.getElementById("orienz").innerHTML =  message.orientation.z;
+  });
+
+  values.subscribe(function(message) {
+    console.log();
+    document.getElementById("linearx").innerHTML = message.linear_acceleration.x;
+  });
+
+  values.subscribe(function(message) {
+    console.log();
+    document.getElementById("lineary").innerHTML = message.linear_acceleration.y;
+  });
+
+  values.subscribe(function(message) {
+    console.log();
+    document.getElementById("linearz").innerHTML = message.linear_acceleration.z;
+  });
+
+  values.subscribe(function(message) {
+    console.log();
+    document.getElementById("angularx").innerHTML = message.angular_velocity.x;
+  });
+
+  values.subscribe(function(message) {
+    console.log();
+    document.getElementById("angulary").innerHTML = message.angular_velocity.y;
+  });
+
+  values.subscribe(function(message) {
+    console.log();
+    document.getElementById("angularz").innerHTML = message.angular_velocity.z;
   });
 
 export class VehicleHealth extends Component {
@@ -74,16 +114,34 @@ export class VehicleHealth extends Component {
                     
                     </tr>
                     <tr>
-                        <td>IMU DATA</td>
-                        <td><span id="accelx"></span></td>
+                        <td>Orientation-x: <p></p>Orientation-y: <p></p>Orientation-z: </td>
+                        <td>
+                          <span id="orienx"></span>
+                          <p></p>
+                          <span id="orieny"></span>
+                          <p></p>
+                          <span id="orienz"></span>
+                        </td>
                     </tr>
                     <tr>
-                        <td>field e</td>
-                        <td>9999</td>
+                        <td>Linear Acceleration-x: <p></p>Linear Accelerationn-y: <p></p>Linear Acceleration-z: </td>
+                        <td>
+                          <span id="linearx"></span>
+                          <p></p>
+                          <span id="lineary"></span>
+                          <p></p>
+                          <span id="linearz"></span>
+                        </td>
                     </tr>
                     <tr>
-                        <td>field f</td>
-                        <td>Type</td>
+                        <td>Angular Velocity-x: <p></p>Angular Velocity-y: <p></p>Angular Velocity-z: </td>
+                        <td>
+                          <span id="angularx"></span>
+                          <p></p>
+                          <span id="angulary"></span>
+                          <p></p>
+                          <span id="angularz"></span>
+                        </td>
                     </tr>
                     <tr>
                         <td>field g</td>
