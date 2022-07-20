@@ -19,28 +19,36 @@ var ros = new ROSLIB.Ros({
   ros.on('close', function() {
     console.log('Connection to websocket server closed.');
   });
-  
-  // example listener
-  var listener = new ROSLIB.Topic({
-    ros : ros,
-    name : 'chatter',
-    messageType: 'std_msgs/String'
-  });
 
-  //listener of linear accelearation
+  //listener of IMU data
   var values = new ROSLIB.Topic({
     ros : ros,
     name : "imu/data",
     messageType: 'sensor_msgs/Imu'
   });
-  
-  // example subscriber
-  listener.subscribe(function(message) {
-    console.log();
-    document.getElementById("msg").innerHTML = message.data;
+
+  //listner for "robot pose"
+  var pose = new ROSLIB.Topic({
+    ros : ros,
+    name : "geometry",
+    messageType: "geometry_msgs/Twist"
   });
 
-  // subscriber for linear acceleration
+  //listner for magnetometer
+  var magnetometer = new ROSLIB.Topic({
+    ros : ros,
+    name : "imu/mag",
+    messageType: 'sensor_msgs/MagneticField'
+  });
+
+  //listner for Battery Health
+  var Battery = new ROSLIB.Topic({
+    ros : ros,
+    name : "sensor_msgs/BatteryState",
+    messageType: 'sensor_msgs/BatteryState'
+  });
+
+  // subscribers for IMU data
   values.subscribe(function(message) {
     console.log();
     document.getElementById("orienx").innerHTML = message.orientation.x;
@@ -86,6 +94,53 @@ var ros = new ROSLIB.Ros({
     document.getElementById("angularz").innerHTML = message.angular_velocity.z;
   });
 
+  //subscriber for robot pose
+  pose.subscribe(function(message) {
+    console.log();
+    document.getElementById("rbt_pose").innerHTML = message.data;
+  });
+
+  //subscribers for magnetometer in x,y and z
+  magnetometer.subscribe(function(message) {
+    console.log();
+    document.getElementById("magnetx").innerHTML = message.magnetic_field.x;
+  });
+
+  magnetometer.subscribe(function(message) {
+    console.log();
+    document.getElementById("magnety").innerHTML = message.magnetic_field.y;
+  })
+
+  magnetometer.subscribe(function(message) {
+    console.log();
+    document.getElementById("magnetz").innerHTML = message.magnetic_field.z;
+  })
+
+  //subscriber for Battery Health
+  Battery.subscribe(function(message) {
+    console.log();
+    document.getElementById("present").innerHTML = message.present;
+  })
+
+  Battery.subscribe(function(message) {
+    console.log();
+    document.getElementById("voltage").innerHTML = message.voltage;
+  })
+
+  Battery.subscribe(function(message) {
+    console.log();
+    document.getElementById("current").innerHTML = message.current;
+  })
+
+  Battery.subscribe(function(message) {
+    console.log();
+    document.getElementById("charge").innerHTML = message.charge;
+  })
+
+  Battery.subscribe(function(message) {
+    console.log();
+    document.getElementById("capacity").innerHTML = message.capacity;
+  })
 export class VehicleHealth extends Component {
   constructor(props) {
     super(props);
@@ -96,23 +151,10 @@ export class VehicleHealth extends Component {
 
   render() {
     return (
-		<div>
+		<div style={{height:'10vh'}}>
             <h4 style={{paddingLeft: "12px"}}>Vehicle Health</h4>
             <center>
                 <table>
-                    <tr>
-                        <th>Field</th>
-                        <th>Type</th>
-                    </tr>
-                    <tr>
-                        <td>Latitude</td>
-                        <td>{this.latitude}</td>
-                    </tr>
-                    <tr>
-                        <td>Last /txt_msg received:</td>
-                        <td><span id="msg"></span></td>
-                    
-                    </tr>
                     <tr>
                         <td>Orientation-x: <p></p>Orientation-y: <p></p>Orientation-z: </td>
                         <td>
@@ -144,8 +186,34 @@ export class VehicleHealth extends Component {
                         </td>
                     </tr>
                     <tr>
-                        <td>field g</td>
-                        <td>9999</td>
+                        <td>Robot Pose</td>
+                        <td><span id="rbt_pose"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Magnetometer-x: <p></p>Magnetometer-y: <p></p>Magnetometer-z: </td>
+                        <td>
+                          <span id="magnetx"></span>
+                          <p></p>
+                          <span id="magnety"></span>
+                          <p></p>
+                          <span id="magnetz"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Battery stats <p></p>Is Battery Present: <p></p>Voltage: <p></p>Current: <p></p>Charge: <p></p>Capacity: </td>
+                        <td>
+                          <p></p>
+                          <span id="present"></span>
+                          <p></p>
+                          <span id="voltage"></span>
+                          <p></p>
+                          <span id="current"></span>
+                          <p></p>
+                          <span id="charge"></span>
+                          <p></p>
+                          <span id="capacity"></span>
+                          <p></p>
+                        </td>
                     </tr>
                 </table>
             </center>
