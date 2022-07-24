@@ -23,7 +23,7 @@
 
 .data-container {
   display: grid;
-  grid-template-rows: 33vh 65.4vh;
+  grid-template-rows: 23vh 77vh;
   grid-template-columns: 19.8vw;
 }
 
