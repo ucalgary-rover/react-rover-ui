@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find robot_gui_bridge)/launch/websocket.launch"/>
+    <node name = "map_node" pkg = "robot_gui_bridge" type = "xp-map-server-startup.sh" output = "screen"/>
+    <node name = "ui_node" pkg = "robot_gui_bridge" type = "ui-startup.sh" output = "screen"/>
+</launch>
